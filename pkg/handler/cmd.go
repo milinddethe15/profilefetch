@@ -10,11 +10,12 @@ import (
 
 func RunCmd(cmd *cobra.Command, args []string) {
 	username := args[0]
+	showAvatar, _ := cmd.Flags().GetBool("show-picture")
 	client := ghclient.CreateClient()
 	user, err := client.FetchUserProfile(username)
 	if err != nil {
 		fmt.Printf("Error fetching profile for %s: %v\n", username, err)
 		return
 	}
-	display.DisplayOutput(username, user)
+	display.DisplayOutput(username, user, showAvatar)
 }

@@ -17,6 +17,10 @@ var RootCmd = &cobra.Command{
 	},
 }
 
+func init() {
+	RootCmd.Flags().BoolP("show-picture", "p", false, "Display profile picture in ASCII format")
+}
+
 func Execute() {
 	if err := RootCmd.Execute(); err != nil {
 		log.Fatalf("Error: %v", err)

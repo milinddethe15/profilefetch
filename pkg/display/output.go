@@ -8,7 +8,7 @@ import (
 	"github.com/google/go-github/v60/github"
 )
 
-func DisplayOutput(username string, user *github.User) {
+func DisplayOutput(username string, user *github.User, showAvatar bool) {
 	// color styles
 	title := color.New(color.FgHiCyan).SprintFunc()
 	info := color.New(color.FgWhite).SprintFunc()
@@ -34,7 +34,11 @@ func DisplayOutput(username string, user *github.User) {
      .-%@@@@@@:        :@@@@@@%-.     
         .*@@@@:        :@@@@*.        `
 
-	
+	if showAvatar {
+		if art := avatarArt(user.GetAvatarURL()); art != "" {
+			asciiArt = art
+		}
+	}
 	profileData := []string{
 		title(username + "@github"),
 		strings.Repeat("-", 30),

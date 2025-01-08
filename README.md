@@ -5,8 +5,12 @@ Neofetch like tool to fetch github user profile.
 
 ```bash
 profilefetch [username]
+
+# shows user profile picture in ASCII format
+profilefetch [username] -p
 ```
 
 TODO:
-- print user avatar
-- Add top repos of user
+- [x] Add flag to show user profile picture in ASCII
+- [ ] Display top repos of user
+- [ ] Add multiple social sites (instagram, linkedIn, X)
