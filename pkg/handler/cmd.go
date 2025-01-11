@@ -17,5 +17,10 @@ func RunCmd(cmd *cobra.Command, args []string) {
 		fmt.Printf("Error fetching profile for %s: %v\n", username, err)
 		return
 	}
-	display.DisplayOutput(username, user, showAvatar)
+	repos, err := client.FetchUserRepos(username)
+	if err != nil {
+		fmt.Printf("Error fetching repos for %s: %v\n", username, err)
+		return
+	}
+	display.DisplayOutput(username, user, repos, showAvatar)
 }
